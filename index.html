@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Valdisa Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #111;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .header {
+            background: #0a1f44;
+            padding: 16px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .header nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .social a {
+            color: white;
+            margin-left: 12px;
+            font-size: 18px;
+        }
+
+        .hero {
+            background: #f5f7fb;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 18px;
+        }
+
+        .btn {
+            background: #0a1f44;
+            color: white;
+            padding: 14px 28px;
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 90px 20px;
+            text-align: center;
+        }
+
+        .paketlayanan-section h2 {
+            margin-bottom: 60px;
+        }
+
+
+        .gray {
+            background: #f0f2f7;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 28px;
+            width: 280px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Hover untuk card biasa */
+        .card:not(.navy):hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card.navy {
+            background: #0a1f44;
+            color: #e5e7eb;
+            border: 1px solid rgba(250, 204, 21, 0.35);
+            box-shadow: 0 14px 35px rgba(10, 31, 68, 0.5);
+        }
+
+        /* Title */
+        .card.navy h3 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* Price */
+        .card.navy .price {
+            color: #facc15;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 18px 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* Default checklist */
+        .checklist li::before {
+            content: "✓";
+            color: #0a1f44;
+            font-weight: bold;
+        }
+
+        /* Checklist khusus navy */
+        .card.navy .checklist li {
+            color: #e5e7eb;
+        }
+
+        .card.navy .checklist li::before {
+            color: #facc15;
+        }
+
+        .card.navy:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 18px 45px rgba(10, 31, 68, 0.7),
+                0 0 0 1px rgba(250, 204, 21, 0.5);
+        }
+
+        .card.navy::before {
+            content: "RECOMMENDED";
+            position: absolute;
+            top: -12px;
+            right: 18px;
+            background: #facc15;
+            color: #0a1f44;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+
+        .portfolio-card {
+            width: 280px;
+            background: #0a1f44;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .portfolio-info {
+            padding: 16px;
+        }
+
+        .portfolio-info span {
+            color: #facc15;
+            font-weight: 600;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .faq-section {
+            background: #fff;
+            padding: 80px 20px;
+            color: #111;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 16px;
+            background: #0a1f44;
+            border-radius: 10px;
+            padding: 18px 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #162f63;
+        }
+
+        .faq-question {
+            display: flex;
+            color: #fff;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            font-size: 15px;
+            color: #d0d6e0;
+            transition: 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 12px;
+        }
+
+        .faq-item.active i {
+            transform: rotate(180deg);
+        }
+
+        .footer {
+            background: #0a1f44;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width:768px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+
+        .wa-float {
+            position: fixed;
+            width: 55px;
+            height: 55px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-flex">
+            <div class="logo-wrap">
+                <img src="assets/logo.jpeg" class="logo">
+                <span class="logo-text">Valdisa Studio</span>
+            </div>
+            <nav>
+                <a href="#layanan">Layanan</a>
+                <a href="#portfolio">Portofolio</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <div class="social">
+                <a href="https://www.instagram.com/stasiaamora.inc?igsh=OW80Y2d4M25uaDR6"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@stasiaamora.inc?_r=1&_t=ZS-93dAgL2LYTi"><i
+                        class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/share/1K3nTWn7a3/"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/6285761064705?text=Halo%20Valdisa%20Studio,%20saya%20tertarik%20konsultasi%20pembuatan%20website%20untuk%20bisnis%20saya
+"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Website profesional untuk bisnis yang ingin terlihat serius</h1>
+        <p>Landing page, company profile, sampai website jasa.</p>
+        <a href="https://wa.me/6285761064705?text=Halo%20Valdisa%20Studio,%20saya%20tertarik%20konsultasi%20pembuatan%20website%20untuk%20bisnis%20saya"
+            class="btn">
+            <i class="fab fa-whatsapp"></i> Konsultasi Gratis</a>
+        <p style="margin-top:12px;">
+            atau email ke:
+            <a href="mailto:valdisastudio@gmail.com">valdisastudio@gmail.com</a>
+        </p>
+    </section>
+
+    <section class="section gray">
+        <h2>Masalah Ini Sering Dialami UMKM</h2>
+        <div class="container" style="max-width:720px;">
+            <ul class="checklist">
+                <li>Sudah punya website tapi tidak mendatangkan pelanggan</li>
+                <li>Bingung mulai dari mana & takut biaya membengkak</li>
+                <li>Vendor lama sulit dihubungi & proses tidak transparan</li>
+                <li>Ingin fokus jualan, bukan mengurus teknis website</li>
+            </ul>
+            <p style="margin-top:20px; font-weight:600;">
+                👉 Kalau ini kamu, berarti masalahnya bukan di bisnis — tapi di sistem digitalnya.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Solusi Website yang Dibuat untuk Bisnis</h2>
+        <p style="max-width:720px; margin:20px auto;">
+            Valdisa Studio membantu UMKM dan bisnis jasa memiliki website yang jelas, rapi,
+            dan siap digunakan sebagai alat promosi & penjualan.
+        </p>
+
+        <div class="badges">
+            <span class="badge">Mobile-friendly & cepat |</span>
+            <span class="badge">Siap SEO & Ads |</span>
+            <span class="badge">Fokus konversi</span>
+        </div>
+    </section>
+
+    <section id="layanan" class="section">
+        <h2>Paket Layanan</h2>
+        <div class="cards">
+            <div class="card navy">
+                <h3>Company Profile</h3>
+                <p><strong>Untuk bisnis yang ingin terlihat profesional & dipercaya</strong></p>
+                <ul class="checklist">
+                    <li>Meningkatkan kepercayaan calon pelanggan</li>
+                    <li>Menjelaskan bisnis tanpa harus jawab chat berulang</li>
+                    <li>Bisa dipakai untuk iklan & promosi</li>
+                    <li>Tampilan rapi di HP & laptop</li>
+                    <li>Mudah dikembangkan kalau bisnis berkembang</li>
+                </ul>
+                <p>⏱ Estimasi: 7–14 hari</p>
+                <p class="price">Mulai dari Rp 1.500.000 - Rp 6.500.000</p>
+            </div>
+
+
+            <div class="card navy">
+                <h3>Website Jasa / Travel</h3>
+                <p><strong>Untuk bisnis yang ingin sistem, bukan sekadar tampilan</strong></p>
+                <ul class="checklist">
+                    <li>Calon pelanggan bisa lihat paket & harga lebih jelas</li>
+                    <li>Mengurangi chat yang tidak serius</li>
+                    <li>Bisa tambah sistem booking / pembayaran</li>
+                    <li>Tampilan lebih premium (bisa naikin harga jasa)</li>
+                    <li>Siap diskalakan ke iklan & SEO</li>
+                </ul>
+                <p>⏱ Estimasi: 7–21 hari</p>
+                <p class="price">Mulai dari Rp 2.750.000 - Rp 12.000.000</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Proses Kerja Kami</h2>
+        <div class="container" style="max-width:700px;">
+            <ul class="checklist">
+                <li>Konsultasi kebutuhan bisnis</li>
+                <li>Desain & pengembangan website</li>
+                <li>Revisi sesuai scope</li>
+                <li>Website online & siap dipakai</li>
+            </ul>
+            <p style="margin-top:20px; font-weight:600;">
+                👉 Kami membatasi jumlah project setiap bulan untuk menjaga kualitas.
+                Proses jelas, tanpa drama.
+            </p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section gray">
+        <h2>Contoh Website</h2>
+        <div class="cards">
+            <a href="#" class="portfolio-card">
+                <img src="assets/travel.jpeg">
+                <div class="portfolio-info">
+                    <h4>Website Travel</h4>
+                    <span>Lihat →</span>
+                </div>
+            </a>
+
+            <a href="#" class="portfolio-card">
+                <img src="assets/company.jpeg">
+                <div class="portfolio-info">
+                    <h4>Company Profile</h4>
+                    <span>Lihat →</span>
+                </div>
+            </a>
+
+            <a href="#" class="portfolio-card">
+                <img src="assets/rental.jpeg">
+                <div class="portfolio-info">
+                    <h4>Website Rental</h4>
+                    <span>Lihat →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2>FAQ</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Berapa lama pembuatan?</span>
+                <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">7–21 hari tergantung kompleksitas</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Termasuk domain?</span>
+                <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Belum, tapi kami bantu setup</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Revisi berapa kali?</span>
+                <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Sesuai paket. Tambahan dikenakan biaya</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Bisa cicil?</span>
+                <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Bisa, dengan ketentuan DP</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p><strong>Valdisa Studio</strong></p>
+        <p>
+            <i class="fa fa-envelope"></i>
+            <a href="mailto:valdisastudio@gmail.com">
+                valdisastudio@gmail.com
+            </a>
+        </p>
+
+        <p class="copyright">
+            © 2026 Valdisa Studio. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        document.querySelectorAll(".faq-item").forEach(item => {
+            item.addEventListener("click", () => {
+                item.classList.toggle("active");
+            });
+        });
+    </script>
+
+    <a href="https://wa.me/6285761064705?text=Halo%20Valdisa%20Studio,%20saya%20tertarik%20konsultasi%20pembuatan%20website%20untuk%20bisnis%20saya"
+        class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+
+</html>
